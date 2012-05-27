@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    	http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+      	
+	<http auto-config="true" >		
+		<intercept-url pattern="/webresources/css/**" filters="none"/>
+		<intercept-url pattern="/webresources/images/**" filters="none"/>
+		<intercept-url pattern="/webresources/styles/**" filters="none"/>
+<!-- 		<intercept-url pattern="/struts/**" filters="none"/>	 -->
+		<intercept-url pattern="/webresources/script/**" filters="none"/>
+		<intercept-url pattern="/webresources/themes/**" filters="none"/>
+		<intercept-url pattern="/webresources/ui/**" filters="none"/>	
+		<intercept-url pattern="/jqCalendar/**" filters="none"/>		
+		<intercept-url pattern="/wileyAdmin/*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/servlet/*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<form-login login-page="/wileyAdmin/index.do" default-target-url="/wileyAdmin/login.do" always-use-default-target="false" authentication-failure-url="/wileyAdmin/index.do?loginError=true"  /> 
+		<logout logout-success-url="/wileyAdmin/index.do" invalidate-session="true" />
+<!-- 		<session-management invalid-session-url="/wileyAdmin/sessionTimeout.do"> -->
+<!--             <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" /> -->
+<!--         </session-management> -->
+	</http>
+	
+	<authentication-manager alias="authenticationManager" >
+		<authentication-provider user-service-ref='userDetailsService' >
+			<password-encoder hash="md5"/>
+		</authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<beans:property name="rolePrefix" value="ROLE_" />
+		<beans:property name="dataSource" ref="springSecurityDataSource" />
+		<beans:property name="usersByUsernameQuery" value="SELECT username,password,enabled FROM Users WHERE username = ?" />
+		<beans:property name="authoritiesByUsernameQuery" value="SELECT u.username, a.authorityname FROM Users u JOIN Users_Authorities ua on u.id = ua.user_id JOIN Authorities a on ua.authorities_id = a.id WHERE u.username = ?" />
+	</beans:bean>	
+		
+	<!-- ******************************************************************** -->
+	<!-- Apply security for all beans where security was set -->
+	<!-- ******************************************************************** -->
+	<global-method-security pre-post-annotations="enabled"></global-method-security>
+      	
+</beans:beans>
