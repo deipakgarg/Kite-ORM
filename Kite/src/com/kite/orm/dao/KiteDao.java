@@ -3,6 +3,8 @@ package com.kite.orm.dao;
 
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.dao.DataAccessException;
 
 
@@ -15,6 +17,16 @@ import org.springframework.dao.DataAccessException;
  */
 public interface KiteDao<T>
 {
+	/**
+	 * @param DataSource ds
+	 */
+	public void setDataSource(DataSource ds);
+	
+	/**
+	 * @return DataSource
+	 */
+	public DataSource getDataSource();
+
 	/**
 	 * Persist (Create New Object) the specified object through the kite framework.
 	 * 
