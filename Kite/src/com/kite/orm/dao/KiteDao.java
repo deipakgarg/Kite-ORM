@@ -1,6 +1,8 @@
 package com.kite.orm.dao;
 
 
+import java.util.List;
+
 import org.springframework.dao.DataAccessException;
 
 
@@ -38,6 +40,8 @@ public interface KiteDao<T>
 	 * 
 	 * @param <T> the type for the Entity to be removed
 	 * @param object of the Entity to be removed
+	 * @return success flag
+	 * @throws DataAccessException
 	 */
 	public int remove(T object) throws DataAccessException;
 	
@@ -46,6 +50,19 @@ public interface KiteDao<T>
 	 * 
 	 * @param <T> the type for the Entity to be returned
 	 * @param object of the Entity to be retrieved
+	 * @return the persisted Entity
+	 * @throws DataAccessException
 	 */
 	public T read(T object) throws DataAccessException;
+	
+	/**
+	 * Retrieved list of objects based on criteria passed in sql form.
+	 * 
+	 * @param object
+	 * @param strQry Example: Employee_Id = ? And Employee_Name like ?
+	 * @param paramenters Example: 5, Deepak
+	 * @return list of persisted Entities
+	 * @throws DataAccessException
+	 */
+	public List<T> read(T object, String strQry, Object... paramenters) throws DataAccessException;
 }
