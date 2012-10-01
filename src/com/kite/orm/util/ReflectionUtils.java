@@ -32,28 +32,28 @@ public class ReflectionUtils
 		catch (SecurityException e)
 		{
 			e.printStackTrace();
-			throw new DataAccessException("", e)
+			throw new DataAccessException("SecurityException", e)
 				{
 				};
 		}
 		catch (NoSuchFieldException e)
 		{
 			e.printStackTrace();
-			throw new DataAccessException("", e)
+			throw new DataAccessException("NoSuchFieldException", e)
 				{
 				};
 		}
 		catch (IllegalArgumentException e)
 		{
 			e.printStackTrace();
-			throw new DataAccessException("", e)
+			throw new DataAccessException("IllegalArgumentException", e)
 				{
 				};
 		}
 		catch (IllegalAccessException e)
 		{
 			e.printStackTrace();
-			throw new DataAccessException("", e)
+			throw new DataAccessException("IllegalAccessException", e)
 				{
 				};
 		}
