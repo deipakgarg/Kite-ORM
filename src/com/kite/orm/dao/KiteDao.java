@@ -19,7 +19,7 @@ public interface KiteDao<T>
 	 * Persist (Create New Object) the specified object through the kite framework.
 	 * 
 	 * @param object of the Entity to be persisted
-	 * @return the persisted Entity
+	 * @return the persisted Entity Primary Key
 	 * @throws DataAccessException
 	 */
 	public int insert(T object) throws DataAccessException;
@@ -28,7 +28,7 @@ public interface KiteDao<T>
 	 * Persist (Modify Object) the specified object through the kite framework.
 	 * 
 	 * @param object of the Entity to be persisted
-	 * @return the persisted Entity
+	 * @return success flag
 	 * @throws DataAccessException
 	 */
 	public int update(T object) throws DataAccessException;
@@ -60,5 +60,5 @@ public interface KiteDao<T>
 	 * @return list of persisted Entities
 	 * @throws DataAccessException
 	 */
-	public List<T> read(T object, String strQry, Object... paramenters) throws DataAccessException;
+	public List<T> read(Class<T> c, String strQry, Object... paramenters) throws DataAccessException;
 }

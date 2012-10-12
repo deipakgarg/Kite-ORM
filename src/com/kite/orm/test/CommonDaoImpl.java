@@ -7,7 +7,7 @@ import com.kite.orm.dao.AbstractKiteDao;
 
 
 @Repository("CommonDao")
-public class CommonDaoImpl extends AbstractKiteDao<Template> implements CommonDao
+public class CommonDaoImpl extends AbstractKiteDao<Employee> implements CommonDao
 {
 	public CommonDaoImpl()
 	{

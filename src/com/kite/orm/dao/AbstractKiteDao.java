@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
@@ -36,6 +37,7 @@ import com.kite.orm.util.ReflectionUtils;
 public abstract class AbstractKiteDao<T> implements KiteDao<T>
 {
 	protected SimpleJdbcTemplate simpleJdbcTemplate;
+	private Logger log = Logger.getLogger(AbstractKiteDao.class);
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource)
@@ -105,9 +107,9 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 			int j = 0;
 			for (; j < strFieldsName.length; j++)
 			{
-				System.out.println("Key Name: " + strFieldsName[j]);
+				log.debug("Key Name: " + strFieldsName[j]);
 				objFieldValue = ReflectionUtils.getFieldValue(o, strFieldsName[j]);
-				System.out.println("KeyValue: " + objFieldValue);
+				log.debug("KeyValue: " + objFieldValue);
 				if (null != objFieldValue)
 				{
 					if (blnUkFlag)
@@ -131,7 +133,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 					}
 					else
 					{
-						System.out.println("Nullable false");
+						log.debug("Nullable false");
 					}
 				}
 			}
@@ -205,13 +207,14 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 		
 		qry.append("(" + strFieldColumn.toString() + ") values (" + strValueColumn.toString() + ")");
 		
-		System.out.println(qry.toString());
+		log.debug(qry.toString());
 		for (Object o1 : val)
 		{
-			System.out.println(o1);
+			log.debug(o1);
 		}
-		System.out.println(simpleJdbcTemplate.toString());
-		return simpleJdbcTemplate.update(qry.toString(), val.toArray());
+		log.debug(simpleJdbcTemplate.toString());
+		simpleJdbcTemplate.update(qry.toString(), val.toArray());
+		return simpleJdbcTemplate.queryForInt("select last_insert_id()");
 	}
 	
 	/*
@@ -287,7 +290,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 		{
 			e.printStackTrace();
 		}
-		System.out.println(qry.toString());
+		log.debug(qry.toString());
 		return simpleJdbcTemplate.update(qry.toString(), val.toArray());
 	}
 	
@@ -329,7 +332,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 		{
 			e.printStackTrace();
 		}
-		System.out.println(qry.toString());
+		log.debug(qry.toString());
 		return simpleJdbcTemplate.update(qry.toString(), val.toArray());
 	}
 	
@@ -380,7 +383,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 						strFieldColumn.append(clmn.name());
 						colName.add(f.getName());
 						colType.add(f.getType());
-						System.out.println("Name: " + f.getName() + " Type: " + f.getType());
+						log.debug("Name: " + f.getName() + " Type: " + f.getType());
 						if (clmn.name().equalsIgnoreCase(strPkColumnName))
 						{
 							pk = f.get(o);
@@ -403,7 +406,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name());
 				this.setUniqueKeyData(qry, val, o);
 			}
-			System.out.println(qry.toString() + " : " + val);
+			log.debug(qry.toString() + " : " + val);
 			final List<Map<String, Object>> objList = simpleJdbcTemplate.queryForList(qry.toString(), val.toArray());
 			if (null != objList && !objList.isEmpty())
 			{
@@ -421,7 +424,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				
 				object = (T)c.newInstance();
 				BeanUtils.copyProperties(object, objMap);
-				System.out.println(object);
+				log.debug(object);
 			}
 		}
 		catch (Exception e)
@@ -436,9 +439,8 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 	 * 
 	 * @see com.kite.orm.dao.KiteDao#read(java.lang.Object, java.lang.String, java.lang.Object[])
 	 */
-	@SuppressWarnings({"unchecked"})
 	@Transactional(readOnly = true)
-	public List<T> read(Object o, String strQry, Object... parameters) throws DataAccessException
+	public List<T> read(Class<T> c, String strQry, Object... parameters) throws DataAccessException
 	{
 		List<T> list = null;
 		try
@@ -447,7 +449,6 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 			StringBuilder strFieldColumn = new StringBuilder();
 			List<Object> colName = new ArrayList<Object>();
 			List<Object> colType = new ArrayList<Object>();
-			Class<?> c = o.getClass();
 			boolean blnFlag = false;
 			Annotation[] annotations = c.getAnnotations();
 			Field[] fields = c.getDeclaredFields();
@@ -505,7 +506,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 					
 					T object = (T)c.newInstance();
 					BeanUtils.copyProperties(object, objMap);
-					System.out.println(object);
+					log.debug(object);
 					list.add(object);
 					
 				}

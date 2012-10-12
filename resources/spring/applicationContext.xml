@@ -58,6 +58,18 @@
 		<beans:property name="dataSource" ref="wileyDataSource"/>
 	</beans:bean>
 	
+	<!-- ...................Implement Logging   starts .......................................... -->
+	
+	<beans:bean id="log4jInitializer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<beans:property name="staticMethod">
+			<beans:value>org.springframework.util.Log4jConfigurer.initLogging</beans:value>
+		</beans:property>
+		<beans:property name="arguments">
+			<beans:list>
+				<beans:value>classpath:conf/log4j-config.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 	
 	<!-- ******************************************************************** -->
 	<!-- Mark bean transactions as annotation driven -->
