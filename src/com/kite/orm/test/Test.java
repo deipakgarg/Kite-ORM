@@ -23,15 +23,15 @@ public class Test
 		appraisal();
 		displayEmployee(null);
 		Employee e1 = new Employee();
-		e1.setPanCode("ABCD1234");	//	Based of First Unique Key
-		//	Based of First Unique Key (PanCode)
+		e1.setPanCode("ABCD1234"); // Based of First Unique Key
+		// Based of First Unique Key (PanCode)
 		e1 = dao.read(e1);
 		log.info("Employee Details are : " + e1.toString()); // Shows record of
 		Employee e2 = new Employee();
 		e2.setName("Krishna Gaur");
 		e2.setDesignation("SE");
 		e2.setGrade("C");
-		//	Based of Second Unique Key (Combination of 3 Columns: Name, Designation, Grade)
+		// Based of Second Unique Key (Combination of 3 Columns: Name, Designation, Grade)
 		e2 = dao.read(e2);
 		log.info("Employee Details are : " + e2.toString()); // Shows record of
 		removeEmployee();
@@ -85,7 +85,7 @@ public class Test
 		e.setPanCode("ABCD4456");
 		e.setDesignation("SE");
 		e.setGrade("C");
-		e.setSalary(950.00);
+		// e.setSalary(950.00);
 		e.setCreatedBy("Admin");
 		e.setUpdatedBy("Admin");
 		
@@ -104,27 +104,22 @@ public class Test
 		
 		for (Employee employee : list)
 		{
-			if (null != employee.getSalary())
+			if (null == employee.getSalary())
 			{
 				employee.setSalary(1000.00);
 			}
-			else
+			salary = employee.getSalary();
+			if (employee.getGrade().equals("A"))
 			{
-				if (employee.getGrade().equals("A"))
-				{
-					salary = employee.getSalary();
-					employee.setSalary(new Double(salary + (salary * 0.25)));
-				}
-				else if (employee.getGrade().equals("B"))
-				{
-					salary = employee.getSalary();
-					employee.setSalary(new Double(salary + (salary * 0.4)));
-				}
-				else if (employee.getGrade().equals("C"))
-				{
-					salary = employee.getSalary();
-					employee.setSalary(new Double(salary + (salary * 0.5)));
-				}
+				employee.setSalary(salary + (salary * 0.25));
+			}
+			else if (employee.getGrade().equals("B"))
+			{
+				employee.setSalary(salary + (salary * 0.4));
+			}
+			else if (employee.getGrade().equals("C"))
+			{
+				employee.setSalary(salary + (salary * 0.5));
 			}
 			dao.update(employee);
 		}
@@ -147,7 +142,7 @@ public class Test
 		for (Employee employee : list)
 		{
 			dao.remove(employee);
-			log.info("Employee" + employee.getName() + "get deleted.");
+			log.info("Employee " + employee.getName() + " get deleted.");
 		}
 	}
 }
