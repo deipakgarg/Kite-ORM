@@ -99,7 +99,7 @@ public class Test
 	
 	private static void appraisal()
 	{
-		List<Employee> list = dao.read(Employee.class, null);
+		List<Employee> list = dao.getList(Employee.class, null);
 		Double salary = 0.00;
 		
 		for (Employee employee : list)
@@ -127,7 +127,7 @@ public class Test
 	
 	private static void displayEmployee(final String strWhereClause)
 	{
-		List<Employee> list = dao.read(Employee.class, strWhereClause);
+		List<Employee> list = dao.getList(Employee.class, strWhereClause);
 		
 		for (Employee employee : list)
 		{
@@ -137,7 +137,7 @@ public class Test
 	
 	private static void removeEmployee()
 	{
-		List<Employee> list = dao.read(Employee.class, null);
+		List<Employee> list = dao.getList(Employee.class, null);
 		
 		for (Employee employee : list)
 		{

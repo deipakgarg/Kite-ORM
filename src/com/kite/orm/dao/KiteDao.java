@@ -54,11 +54,11 @@ public interface KiteDao<T>
 	/**
 	 * Retrieved list of objects based on criteria passed in sql form.
 	 * 
-	 * @param object
+	 * @param clazz
 	 * @param strQry Example: Employee_Id = ? And Employee_Name like ?
 	 * @param paramenters Example: 5, Deepak
 	 * @return list of persisted Entities
 	 * @throws DataAccessException
 	 */
-	public List<T> read(Class<T> c, String strQry, Object... paramenters) throws DataAccessException;
+	public List<T> getList(Class<T> clazz, String strQry, Object... paramenters) throws DataAccessException;
 }

@@ -437,10 +437,10 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.kite.orm.dao.KiteDao#read(java.lang.Object, java.lang.String, java.lang.Object[])
+	 * @see com.kite.orm.dao.KiteDao#getList(java.lang.Class<T>, java.lang.String, java.lang.Object[])
 	 */
 	@Transactional(readOnly = true)
-	public List<T> read(Class<T> c, String strQry, Object... parameters) throws DataAccessException
+	public List<T> getList(Class<T> c, String strQry, Object... parameters) throws DataAccessException
 	{
 		List<T> list = null;
 		try
