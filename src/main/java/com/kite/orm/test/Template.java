@@ -197,7 +197,7 @@ public class Template
 	 */
 	public final Date getCreatedDate()
 	{
-		return createdDate;
+		return (Date)createdDate.clone();
 	}
 	
 	/**
@@ -206,7 +206,7 @@ public class Template
 	 */
 	public final void setCreatedDate(Date createdDate)
 	{
-		this.createdDate = createdDate;
+		this.createdDate = (Date)createdDate.clone();
 	}
 	
 	/**
@@ -231,16 +231,15 @@ public class Template
 	 */
 	public final Date getUpdatedDate()
 	{
-		return updatedDate;
+		return (Date)updatedDate.clone();
 	}
 	
 	/**
-	 * @param updatedDate
-	 *           the updatedDate to set
+	 * @param updatedDate the updatedDate to set
 	 */
 	public final void setUpdatedDate(Date updatedDate)
 	{
-		this.updatedDate = updatedDate;
+		this.updatedDate = (Date)updatedDate.clone();
 	}
 	
 	@Override

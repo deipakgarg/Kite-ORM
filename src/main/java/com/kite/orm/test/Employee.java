@@ -135,13 +135,13 @@ public class Employee
 	
 	public Date getCreatedDate()
 	{
-		return createdDate;
+		return (Date)createdDate.clone();
 	}
 	
 	
 	public void setCreatedDate(Date createdDate)
 	{
-		this.createdDate = createdDate;
+		this.createdDate = (Date)createdDate.clone();
 	}
 	
 	
@@ -159,13 +159,13 @@ public class Employee
 	
 	public Date getUpdatedDate()
 	{
-		return updatedDate;
+		return (Date)updatedDate.clone();
 	}
 	
 	
 	public void setUpdatedDate(Date updatedDate)
 	{
-		this.updatedDate = updatedDate;
+		this.updatedDate = (Date)updatedDate.clone();
 	}
 	
 	

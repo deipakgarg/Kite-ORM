@@ -3,10 +3,12 @@ package com.kite.orm.dao;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -36,7 +38,7 @@ import com.kite.orm.util.ReflectionUtils;
 @Transactional
 public abstract class AbstractKiteDao<T> implements KiteDao<T>
 {
-	protected JdbcTemplate simpleJdbcTemplate;
+	private JdbcTemplate simpleJdbcTemplate;
 	private Logger log = Logger.getLogger(AbstractKiteDao.class);
 	
 	@Autowired
@@ -202,7 +204,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 		}
 		
 		qry.append("(" + strFieldColumn.toString() + ") values (" + strValueColumn.toString() + ")");
@@ -286,9 +288,9 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				this.setUniqueKeyData(qry, val, o);
 			}
 		}
-		catch (Exception e)
+		catch (NoSuchFieldException | IllegalAccessException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 		}
 		log.debug(qry.toString());
 		return simpleJdbcTemplate.update(qry.toString(), val.toArray());
@@ -330,7 +332,7 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 		}
 		log.debug(qry.toString());
 		return simpleJdbcTemplate.update(qry.toString(), val.toArray());
@@ -396,14 +398,14 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 					}
 				}
 			}
+			qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name());
 			if (blnPkFlag)
 			{
-				qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name() + " where " + strWherePkClause.toString());
+				qry.append(" where " + strWherePkClause.toString());
 				val.add(pk);
 			}
 			else
 			{
-				qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name());
 				this.setUniqueKeyData(qry, val, o);
 			}
 			log.debug(qry.toString() + " : " + val);
@@ -413,11 +415,11 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				Map<String, Object> objTemp = objList.get(0);
 				Map<String, Object> objMap = new HashMap<String, Object>();
 				int index = 0;
-				for (Object ok : objTemp.keySet())
+				for (Entry<String, Object> ok : objTemp.entrySet())
 				{
-					if (null != objTemp.get(ok))
+					if (null != objTemp.get(ok.getKey()))
 					{
-						objMap.put(colName.get(index) + "", objTemp.get(ok));
+						objMap.put(colName.get(index) + "", objTemp.get(ok.getKey()));
 					}
 					index++;
 				}
@@ -427,9 +429,9 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				log.debug(object);
 			}
 		}
-		catch (Exception e)
+		catch (IllegalAccessException | InvocationTargetException | InstantiationException | NoSuchFieldException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 		}
 		return object;
 	}
@@ -474,14 +476,14 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				}
 			}
 			final List<Map<String, Object>> objList;
+			qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name());
 			if (null != strQry && !strQry.equals(""))
 			{
-				qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name() + " where " + strQry);
+				qry.append(" where " + strQry);
 				objList = simpleJdbcTemplate.queryForList(qry.toString(), parameters);
 			}
 			else
 			{
-				qry.append("select " + strFieldColumn.toString() + " from " + c.getAnnotation(Table.class).name());
 				objList = simpleJdbcTemplate.queryForList(qry.toString());
 			}
 			if (null != objList && !objList.isEmpty())
@@ -495,11 +497,11 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 					objTemp = map;
 					objMap = new HashMap<String, Object>();
 					index = 0;
-					for (Object ok : objTemp.keySet())
+					for (Entry<String, Object> ok : objTemp.entrySet())
 					{
-						if (null != objTemp.get(ok))
+						if (null != objTemp.get(ok.getKey()))
 						{
-							objMap.put(colName.get(index) + "", objTemp.get(ok));
+							objMap.put(colName.get(index) + "", objTemp.get(ok.getKey()));
 						}
 						index++;
 					}
@@ -512,9 +514,9 @@ public abstract class AbstractKiteDao<T> implements KiteDao<T>
 				}
 			}
 		}
-		catch (Exception e)
+		catch (InstantiationException | InvocationTargetException | IllegalAccessException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 		}
 		return list;
 	}

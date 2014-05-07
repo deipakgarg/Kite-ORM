@@ -12,6 +12,10 @@ public class Test
 	private static CommonDao dao;
 	private static Logger log = Logger.getLogger(Test.class);
 	
+	private Test()
+	{
+	}
+	
 	/**
 	 * @param args
 	 */

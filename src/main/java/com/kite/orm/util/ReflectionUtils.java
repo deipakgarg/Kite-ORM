@@ -4,7 +4,10 @@ package com.kite.orm.util;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
+
+import com.kite.orm.dao.AbstractKiteDao;
 
 
 /**
@@ -14,6 +17,12 @@ import org.springframework.dao.DataAccessException;
  */
 public class ReflectionUtils
 {
+	private static Logger log = Logger.getLogger(AbstractKiteDao.class);
+
+	private ReflectionUtils() 
+	{
+	}
+	
 	/**
 	 * @param object
 	 * @param strFieldName
@@ -33,28 +42,28 @@ public class ReflectionUtils
 		}
 		catch (SecurityException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 			throw new DataAccessException("SecurityException", e)
 				{
 				};
 		}
 		catch (IllegalArgumentException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 			throw new DataAccessException("IllegalArgumentException", e)
 				{
 				};
 		}
 		catch (IllegalAccessException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 			throw new DataAccessException("IllegalAccessException", e)
 				{
 				};
 		}
 		catch (InvocationTargetException e)
 		{
-			e.printStackTrace();
+			log.debug(e.getMessage(), e);
 			throw new DataAccessException("InvocationTargetException", e)
 				{
 				};
