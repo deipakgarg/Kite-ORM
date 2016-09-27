@@ -1,28 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/activation.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/cas-client-core-3.1.10.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.bsh-2.0.0.b4.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.com.mchange.v2.c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.commonj-1.1.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.edu.emory.mathcs.backport-3.0.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.javax.inject-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.net.sf.cglib-2.2.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.aopalliance-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.commons.fileupload-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.commons.httpclient-3.1.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.commons.lang-2.4.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.commons.logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.commons.pool-1.5.3.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.apache.taglibs.standard-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.codehaus.jackson.mapper-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.junit-4.7.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.quartz-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/com.springsource.org.testng-5.10.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-io-1.3.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-net.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/commons-validator-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/dwr-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/easymock.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/freemarker-2.3.16.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/jamon-2.7.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/javassist-3.8.0.GA.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/jmxremote_optional.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/jmxremote.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/jmxri.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/jotm.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/json-lib-2.3-jdk15.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/junit-3.8.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/ldapsdk-4.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/mail-1.3.3.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/ognl-2.6.9.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/ognl-3.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.aop-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.asm-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.aspects-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.beans-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.binding-2.0.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.context-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.context.support-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.core-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.expression-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.instrument-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.instrument.tomcat-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.jdbc-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.js-2.0.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.orm-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.oxm-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.test-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.transaction-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.web-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.web.portlet-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.web.servlet-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.web.struts-3.0.1.RELEASE-A.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/org.springframework.webflow-2.0.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/plugin.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/poi-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/poi-contrib-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/poi-examples-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/poi-ooxml-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/poi-ooxml-schemas-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/poi-scratchpad-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/portlet-api-2.0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/slf4j-log4j12-1.5.8.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/sslext-1.2-0.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-config-browser-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-convention-plugin-2.2.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-core-2.2.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-dojo-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-dwr-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-jasperreports-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-javatemplates-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-jquery-chart-plugin-2.4.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-jquery-grid-plugin-2.4.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-jquery-plugin-2.4.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-jquery-richtext-plugin-2.4.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-json-plugin-2.2.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-junit-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-pell-multipart-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-sitegraph-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-spring-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-testng-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/struts2-tiles-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/testng-5.1.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/tiles-api-2.0.6.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/tiles-core-2.0.6.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/tiles-jsp-2.0.6.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/transactions-essentials-all.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/velocity-1.4.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/velocity-1.5.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/velocity-1.7.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/velocity-dep-1.4.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/velocity-tools-1.3.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/wjhk.jupload.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/wstx-asl-3.2.7.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/xapool.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/xmlunit-1.2.jar"/>
+	<classpathentry kind="lib" path="/eBookBulk/WEB-INF/lib/xwork-core-2.2.1.jar" sourcepath="/eBookBulk/WEB-INF/lib/xwork-core-2.2.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
